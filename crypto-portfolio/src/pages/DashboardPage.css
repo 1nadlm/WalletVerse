@@ -1,0 +1,381 @@
+/* Container principal - Layout en grille */
+.dashboard-container {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+/* ===== SIDEBAR GAUCHE ===== */
+.sidebar {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(20px);
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    box-shadow: 2px 0 20px rgba(0, 0, 0, 0.15);
+    border-right: 1px solid rgba(255, 255, 255, 0.2);
+    overflow-y: auto;
+}
+
+/* Logo */
+.logo-container {
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    margin-bottom: 10px;
+}
+
+.logo {
+    max-width: 160px;
+    height: auto;
+}
+
+/* Sidebar Navigation */
+.sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.nav-title {
+    color: white;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 0 0 8px 0;
+    opacity: 0.8;
+}
+
+.sidebar-button {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 20px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    color: white;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    width: 100%;
+    text-align: left;
+}
+
+.sidebar-button:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateX(5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.sidebar-button.active {
+    background: rgba(255, 255, 255, 0.95);
+    color: #667eea;
+    border-color: white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-button.active .button-icon {
+    filter: brightness(1);
+}
+
+.sidebar-button.active:hover {
+    transform: translateX(5px);
+}
+
+.button-icon {
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button-label {
+    flex: 1;
+}
+
+/* Balance Section */
+.balance-section {
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 25px;
+    color: white;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.balance-title {
+    font-size: 0.9rem;
+    margin: 0 0 10px 0;
+    opacity: 0.9;
+    font-weight: normal;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.balance-amount {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin: 0 0 5px 0;
+}
+
+.balance-subtitle {
+    font-size: 0.85rem;
+    margin: 0;
+    opacity: 0.8;
+}
+
+/* Sidebar Footer */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.welcome-text {
+    color: white;
+    text-align: center;
+    margin: 0;
+    font-size: 1rem;
+    opacity: 0.9;
+}
+
+/* ===== MAIN CONTENT AREA ===== */
+.main-content {
+    padding: 40px;
+    overflow-y: auto;
+    background: transparent;
+    height: 100vh;
+}
+
+/* Content Header */
+.content-header {
+    margin-bottom: 30px;
+}
+
+.page-title {
+    font-size: 2.5rem;
+    color: white;
+    margin: 0;
+    font-weight: 700;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Crypto Table Section */
+.crypto-table-section {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    margin-bottom: 100px;
+}
+
+/* Loading & Error States */
+.loading-message {
+    text-align: center;
+    padding: 60px;
+    color: #667eea;
+    font-size: 1.2rem;
+}
+
+.error-container {
+    text-align: center;
+    padding: 60px;
+}
+
+.error-message {
+    color: #e74c3c;
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+}
+
+.error-hint {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Table */
+.crypto-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.crypto-table thead tr {
+    background: #f8f9fb;
+    border-bottom: 2px solid #e8ecef;
+}
+
+.crypto-table th {
+    padding: 18px 20px;
+    text-align: left;
+    color: #667eea;
+    font-weight: 700;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.crypto-table tbody tr {
+    border-bottom: 1px solid #f0f2f5;
+    transition: all 0.2s;
+}
+
+.crypto-table tbody tr:hover {
+    background: #f8f9fb;
+    transform: scale(1.01);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.crypto-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.crypto-table td {
+    padding: 18px 20px;
+}
+
+/* Text Alignment */
+.text-left {
+    text-align: left;
+}
+
+/* Coin Info */
+.rank-cell {
+    color: #9ca3af;
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.coin-info {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.coin-icon {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+
+.coin-details {
+    display: flex;
+    flex-direction: column;
+}
+
+.coin-name {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 0.95rem;
+}
+
+.coin-symbol {
+    font-size: 0.8rem;
+    color: #9ca3af;
+    text-transform: uppercase;
+    margin-top: 2px;
+}
+
+/* Price Cell */
+.price-cell {
+    font-weight: 700;
+    color: #2c3e50;
+    font-size: 1rem;
+}
+
+/* Change Cell */
+.change-cell {
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+.change-cell.positive {
+    color: #10b981;
+}
+
+.change-cell.negative {
+    color: #ef4444;
+}
+
+/* Volume Cell */
+.volume-cell {
+    color: #6b7280;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .dashboard-container {
+        grid-template-columns: 280px 1fr;
+    }
+
+    .logo {
+        max-width: 130px;
+    }
+
+    .balance-amount {
+        font-size: 2rem;
+    }
+
+    .main-content {
+        padding: 30px;
+    }
+}
+
+@media (max-width: 900px) {
+    .dashboard-container {
+        grid-template-columns: 1fr;
+    }
+
+    .sidebar {
+        padding: 20px;
+    }
+
+    .main-content {
+        padding: 25px;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    .crypto-table th,
+    .crypto-table td {
+        padding: 12px 10px;
+        font-size: 0.85rem;
+    }
+
+    .coin-icon {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    .volume-cell {
+        display: none;
+    }
+
+    .crypto-table th:last-child {
+        display: none;
+    }
+
+    .sidebar-button {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+    }
+}

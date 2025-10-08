@@ -1,0 +1,236 @@
+/* Unique scope to prevent leakage */
+.portfolio-page {
+    min-height: 100vh;
+    width: 100vw;
+    background: linear-gradient(135deg, #0f172a, #1e293b, #334155);
+    color: white;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Navbar */
+.portfolio-nav {
+    background: rgba(15, 23, 42, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 20px 0;
+}
+
+.portfolio-nav-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.portfolio-logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+
+.portfolio-links {
+    display: flex;
+    gap: 40px;
+}
+
+.portfolio-links a {
+    color: #94a3b8;
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.portfolio-links a:hover {
+    color: white;
+}
+
+.portfolio-links .active {
+    color: white;
+    border-bottom: 2px solid #627eea;
+}
+
+/* Main Layout */
+.portfolio-main {
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 60px;
+}
+
+.portfolio-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.portfolio-header p {
+    color: #94a3b8;
+    font-size: 1.1rem;
+}
+
+/* Stats Cards */
+.portfolio-stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin: 50px 0;
+}
+
+.portfolio-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 32px;
+}
+
+.portfolio-card.gradient {
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.15);
+}
+
+.portfolio-card span {
+    color: #94a3b8;
+    text-transform: uppercase;
+    font-size: 0.875rem;
+}
+
+.portfolio-card h2 {
+    font-size: 2.5rem;
+    margin-top: 8px;
+}
+
+.positive {
+    color: #10b981;
+}
+
+/* Grid Layout */
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1.8fr;
+    gap: 30px;
+}
+
+/* Chart */
+.portfolio-chart {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+}
+
+.portfolio-chart-inner {
+    height: 400px;
+}
+
+/* Holdings */
+.portfolio-holdings {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.holding-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    padding: 28px 32px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.holding-card:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+.holding-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 20px;
+}
+
+.holding-info {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.holding-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+}
+
+.holding-value h4 {
+    font-size: 1.5rem;
+}
+
+.holding-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.bar-fill {
+    flex: 1;
+    height: 6px;
+    border-radius: 999px;
+    transition: width 0.8s ease;
+}
+
+/* Table */
+.portfolio-table {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 40px;
+    margin-top: 40px;
+}
+
+.portfolio-table table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.portfolio-table th,
+.portfolio-table td {
+    padding: 20px 24px;
+    text-align: right;
+}
+
+.portfolio-table th:first-child,
+.portfolio-table td:first-child {
+    text-align: left;
+}
+
+.portfolio-table thead {
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.portfolio-table tbody tr:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.asset-cell {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.asset-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: white;
+}
