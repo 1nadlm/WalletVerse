@@ -51,12 +51,18 @@ function DashboardPage() {
           .sort((a, b) => b.quotes.USD.volume_24h - a.quotes.USD.volume_24h)
           .slice(0, 10);
 
+      } else if (category === "winners") {
+        data = data
+          .filter(coin => coin.quotes.USD.percent_change_24h !== null && coin.quotes.USD.percent_change_24h > 0)
+          .sort((a, b) => b.quotes.USD.percent_change_24h - a.quotes.USD.percent_change_24h)
+          .slice(0, 10);
       } else if (category === "losers") {
         data = data
           .filter(coin => coin.quotes.USD.percent_change_24h !== null && coin.quotes.USD.percent_change_24h < 0)
           .sort((a, b) => a.quotes.USD.percent_change_24h - b.quotes.USD.percent_change_24h)
           .slice(0, 10);
       }
+
 
       setCryptoData(data);
 
@@ -103,6 +109,7 @@ function DashboardPage() {
           {[
             { key: 'top10', label: 'Top 10', icon: '🏆' },
             { key: 'trending', label: 'Trending', icon: '🔥' },
+            { key: 'winners', label: 'Winners', icon: '­📈' },
             { key: 'losers', label: 'Losers', icon: '📉' }
           ].map(tab => (
             <button
@@ -130,21 +137,13 @@ function DashboardPage() {
           <p className="balance-amount">$10,000.00</p>
           <p className="balance-subtitle">Total Portfolio Value</p>
         </section>
-
-        {/* Additional info could go here */}
-        <div className="sidebar-footer">
-          <p className="welcome-text">Welcome back! 🚀</p>
-        </div>
       </aside>
 
-      {/* Main content area */}
       <main className="main-content">
-        {/* Header avec tabs */}
         <header className="content-header">
           <h1 className="page-title">Market Overview</h1>
         </header>
 
-        {/* Table of Coins */}
         <section className="crypto-table-section">
           {loading ? (
             <div className="loading-message">Loading... ⏳</div>
@@ -178,7 +177,11 @@ function DashboardPage() {
                   const volume = usdData.volume_24h || 0;
 
                   return (
-                    <tr key={coin.id}>
+                    <tr key={coin.id}
+                      onClick={() => navigate(`/coinDetail/${coin.id}`)}
+                      style={{ cursor: 'pointer' }}
+                      className="clickable-row"
+                    >
                       <td className="rank-cell">{coin.rank}</td>
                       <td>
                         <div className="coin-info">

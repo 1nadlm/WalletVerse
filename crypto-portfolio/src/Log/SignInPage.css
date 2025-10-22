@@ -1,6 +1,7 @@
 /* Scope everything inside .signin-page so it doesn’t affect other pages */
 .signin-page {
     margin: 0;
+    width: 100vw;
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
     display: flex;

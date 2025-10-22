@@ -4,6 +4,7 @@ import SignUpPage from "./Log/SignUpPage";
 import DashboardPage from "./pages/DashboardPage";
 import ProfilePage from "./pages/ProfilePage";
 import PortfolioPage from "./pages/PortfolioPage";
+import CoinDetail from "./pages/CoinDetail";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/profile" element={<ProfilePage />} />
         <Route path="/portfolio" element={<PortfolioPage />} />
+        <Route path="/coinDetail/:id" element={<CoinDetail />} />
       </Routes>
     </Router>
   );

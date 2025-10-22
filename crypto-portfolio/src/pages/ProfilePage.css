@@ -1,16 +1,15 @@
-/* Reset and Base */
-* {
+/* Reset and Base * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-}
+} */
 
-html,
+/* html,
 body {
     width: 100vw;
     height: 100%;
     overflow-x: hidden;
-}
+} */
 
 /* Profile Page Wrapper */
 .profile-page-wrapper {
@@ -189,6 +188,9 @@ body {
 
 .profile-avatar-section {
     margin-bottom: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .profile-avatar-img {
@@ -197,6 +199,7 @@ body {
     border-radius: 50%;
     border: 4px solid rgba(255, 255, 255, 0.1);
     margin-bottom: 20px;
+    object-fit: cover;
 }
 
 .profile-btn-change-photo {

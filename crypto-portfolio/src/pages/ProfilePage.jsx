@@ -1,9 +1,12 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./ProfilePage.css";
 import logo from "../img/WalletVerseLogo.png";
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function ProfilePage() {
+    const fileInputRef = useRef(null);
+    const [previewUrl, setPreviewUrl] = useState(null);
+    const navigate = useNavigate();
     const [user, setUser] = useState({
         name: "John Doe",
         email: "john.doe@walletverse.com",
@@ -15,6 +18,21 @@ function ProfilePage() {
         avatar:
             "https://ui-avatars.com/api/?name=John+Doe&size=200&background=667eea&color=fff&bold=true",
     });
+
+    const handleFileChange = (event) => {
+        const file = event.target.files && event.target.files[0];
+        if (!file) return;
+
+        const reader = new FileReader();
+        reader.onloadend = () => {
+            setPreviewUrl(reader.result);
+            setUser((prevUser) => ({
+                ...prevUser,
+                avatar: reader.result,
+            }));
+        };
+        reader.readAsDataURL(file);
+    }
 
     const [stats] = useState({
         totalInvested: 25000,
@@ -59,14 +77,17 @@ function ProfilePage() {
         <div className="profile-page-wrapper">
             <nav className={`profile-navbar ${isVisible ? "profile-navbar-visible" : "profile-navbar-hidden"}`}>
                 <div className="profile-navbar-content">
-                    <img src={logo} alt="WalletVerse Logo" className="profile-navbar-logo-img" />
-                    <div className="profile-navbar-brand">WalletVerse</div>
+                    <img src={logo} alt="WalletVerse Logo" className="profile-navbar-logo-img"
+                        onClick={() => navigate("/dashboard")}
+                        style={{ cursor: 'pointer' }} />
+                    <div className="profile-navbar-brand"
+                        onClick={() => navigate("/dashboard")}
+                        style={{ cursor: 'pointer' }}>WalletVerse</div>
                     <div className="profile-navbar-links">
                         <a href="/dashboard" className="profile-nav-link">Dashboard</a>
                         <a href="/portfolio" className="profile-nav-link">Portfolio</a>
                         <a href="#" className="profile-nav-link">Transactions</a>
                         <a href="/profile" className="profile-nav-link profile-nav-link-active">Profile</a>
-                        <a href="#" className="profile-nav-link">Settings</a>
                     </div>
                 </div>
             </nav>
@@ -97,14 +118,21 @@ function ProfilePage() {
                     </div>
                 </div>
 
-                {/* Profile sections */}
                 <div className="profile-content-grid">
-                    {/* Left column */}
                     <div className="profile-left-column">
                         <div className="profile-card profile-user-card">
                             <div className="profile-avatar-section">
-                                <img src={user.avatar} alt="Profile" className="profile-avatar-img" />
-                                <button className="profile-btn-change-photo">Change Photo</button>
+                                <img src={previewUrl || user.avatar} alt="Profile" className="profile-avatar-img" />
+                                <input type="file"
+                                    accept="image/*"
+                                    ref={fileInputRef}
+                                    style={{ display: 'none' }}
+                                    onChange={handleFileChange}
+                                />
+                                <button className="profile-btn-change-photo"
+                                    onClick={() => fileInputRef.current.click()}>
+                                    Change Photo
+                                </button>
                             </div>
                             <div className="profile-user-info">
                                 <h2 className="profile-user-name">{user.name}</h2>

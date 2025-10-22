@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 import {
     Chart as ChartJS,
     ArcElement,
@@ -6,7 +7,7 @@ import {
     Legend
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
-import "./PortfolioPage.css"; // <-- CSS file
+import "./PortfolioPage.css";
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -30,6 +31,7 @@ function PortfolioPage() {
             }
         ]
     };
+    const navigate = useNavigate();
 
     const options = {
         responsive: true,
@@ -58,12 +60,14 @@ function PortfolioPage() {
         <div className="portfolio-page">
             <nav className="portfolio-nav">
                 <div className="portfolio-nav-content">
-                    <div className="portfolio-logo">WalletVerse</div>
+                    <div className="portfolio-logo"
+                        onClick={() => navigate("/dashboard")}
+                        style={{ cursor: 'pointer' }}>WalletVerse</div>
                     <div className="portfolio-links">
-                        <a href="#">Dashboard</a>
+                        <a href="/dashboard">Dashboard</a>
                         <a href="#" className="active">Portfolio</a>
                         <a href="#">Transactions</a>
-                        <a href="#">Settings</a>
+                        <a href="/profile">Profile</a>
                     </div>
                 </div>
             </nav>
